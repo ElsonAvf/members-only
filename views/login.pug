@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='post' action='')
+    label
+      span Username
+      input(type='text' name='username' required)
+    label
+      span Password
+      input(type='password' name='password' required)
+      
+    button(class='btn-primary btn-center') Log In
+      
