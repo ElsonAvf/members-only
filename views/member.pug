@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  
+  if user.isMember
+    p You are already a member
+  else
+    p Join the club to see the author and date of the messages
+    p You can find the password to join the clube #[a(href='#') here]
+    form(method='post' action='')
+      label
+        span Password
+        input(type='password' name='password')
+        if error
+          p.error= error.password.msg
+      button(class='btn-primary btn-center') Submit

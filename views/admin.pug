@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  
+  if user.isAdmin
+    p You are already an Admin
+  else
+    p Become an Admin to be able to delete your messages
+    p You can find the password to become an Admin #[a(href='#') here]
+    form(method='post' action='')
+      label
+        span Password
+        input(type='password' name='password')
+        if error
+          p.error= error.password.msg
+      button(class='btn-primary btn-center') Submit
