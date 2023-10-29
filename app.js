@@ -20,9 +20,11 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-mongoose.connect(process.env.MONGODB_URI);
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "mongo connection error"));
+mongoose.set('strictQuery', 'false');
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(process.env.MONGODB_URI);
+};
 
 
 app.use(session({
