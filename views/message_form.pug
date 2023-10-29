@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  
+  form(method='post' action='')
+    label
+      span Title
+      input(
+        type='text'
+        name='title'
+        value=(message ? message.title : '')
+        required
+      )
+      if errors && errors.title
+        p.error= errors.title.msg
+    label
+      span Message
+      textarea(name='message' required)= message ? message.message : ''
+      if errors && errors.message
+        p.error= errors.message.msg
+    button(class='btn-primary btn-center') Save
+    
