@@ -21,6 +21,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 mongoose.connect(process.env.MONGODB_URI);
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "mongo connection error"));
+
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
