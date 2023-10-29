@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+  text-decoration: none;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.registration-wrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-primary {
+  border: none;
+  padding: 8px 20px;
+  text-align: center;
+  background-color: blue;
+  color: white;
+  border-radius: 4px;
+}
+
+.btn-secondary {
+  padding: 8px 20px;
+  text-align: center;
+  outline: 1.5px solid #00B7FF;
+  border-radius: 4px;
+}
+
+.btn-delete {
+  display: block;
+  width: fit-content;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.btn-center {
+  margin: 20px auto 0 auto;
+  display: block;
+}
+
+.error {
+  margin-top: 2px;
+  color: red;
+}
+
+.message-list {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message {
+  list-style-type: none;
+  border: 1px solid black;
+  padding: 16px;
+}
+
+.message-author {
+  margin: 0;
+  font-size: 14px;
+}
+
+.message-date {
+  font-size: 12px;
+}
+
+.message-title {
+  font-size: 16px;
+  margin: 12px 0 2px;
+}
+
+.actions-wrapper {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.welcome-message-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
