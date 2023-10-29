@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='post' action='')
+    label
+      span First Name
+      input(
+        type='text'
+        name='firstName'
+        value=(user ? user.firstName : '')
+        required
+      )
+      if errors && errors.firstName
+        p.error= errors.firstName.msg
+    label
+      span Last Name
+      input(
+        type='text'
+        name='lastName'
+        value=(user ? user.lastName : '')
+        required
+      )
+      if errors && errors.lastName
+        p.error= errors.lastName.msg
+    label
+      span Username
+      input(
+        type='text'
+        name='username'
+        value=(user ? user.username : '')
+        required
+      )
+      if errors && errors.username
+        p.error= errors.username.msg
+    label
+      span Password
+      input(type='password' name='password' required)
+      if errors && errors.password
+        p.error= errors.password.msg
+    label
+      span Confirm Password
+      input(type='password' name='confirmPassword' required)
+      if errors && errors.confirmPassword
+        p.error= errors.confirmPassword.msg
+    button(class='btn-primary btn-center') Sign Up
+      
