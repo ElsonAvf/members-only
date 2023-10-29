@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  h1(style={'text-align': 'center'})= title
+  if user
+    div.welcome-message-wrapper
+      p(style={'font-weight': 'bold'}) Welcome #{user.fullname}
+      a.btn-secondary(href='/logout') Log Out
+    div.actions-wrapper
+      if !user.isMember
+        a.btn-secondary(href='/member') Join the club
+      if !user.isAdmin
+        a.btn-secondary(href='/admin') Become an Admin
+    a(class='btn-primary btn-center' href='/message') Create Message
+    
+    section
+      h2 Messages
+      if messages
+        ul.message-list
+          for message in messages
+            li.message
+              if user.isAdmin && user._id.equals(message.author._id)
+                a(class='btn-primary btn-delete' href=`/message/${message._id}/delete`) Delete Message
+              if user.isMember
+                h3.message-author= message.author.firstName + ' ' + message.author.lastName
+                span.message-date= message.createdAtFormatted
+              h4.message-title= message.title
+              p(style={margin: '0'})=message.message
+      else
+        p No messages yet. Be the first to write a message
+        
+  else
+    p(style={'text-align': 'center', 'margin-top': '40px'}) Sign Up or Log In to see the messages
+    div.registration-wrapper
+      a.btn-primary(href='/signup') Sign Up
+      a.btn-secondary(href='/login') Log In
+  
