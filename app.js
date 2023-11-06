@@ -11,6 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 mongoose.set('strictQuery', false);
+// THE ERROR WAS THAT I FORGET TO SAVE THE RENDER HOST IPs IN THE MONGODB
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected successfully'))
   .catch((err) => console.log(err));
