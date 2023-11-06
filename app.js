@@ -12,7 +12,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 mongoose.set('strictQuery', 'false');
 mongoose.set('bufferCommands', false);
-mongoose.connect(process.env.MONGODB_URI);
+const connectMongoose = async () => {
+  await mongoose.connect(process.env.MONGODB_URI);
+};
+
+connectMongoose()
   
 
 const LocalStrategy = require('./auth/local_strategy');
