@@ -9,6 +9,10 @@ const passport = require('passport');
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
+
+mongoose.set('strictQuery', 'false');
+mongoose.connect(process.env.MONGODB_URI);
+
 const LocalStrategy = require('./auth/local_strategy');
 const User = require('./models/user');
 
@@ -19,13 +23,6 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
-mongoose.set('strictQuery', 'false');
-main().catch((err) => console.log(err));
-async function main() {
-  await mongoose.connect(process.env.MONGODB_URI);
-};
-
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
