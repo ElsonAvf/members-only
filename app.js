@@ -10,14 +10,10 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
-mongoose.set('strictQuery', 'false');
-mongoose.set('bufferCommands', false);
-const connectMongoose = async () => {
-  await mongoose.connect(process.env.MONGODB_URI);
-};
-
-connectMongoose()
-  
+mongoose.set('strictQuery', false);
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch((err) => console.log(err));
 
 const LocalStrategy = require('./auth/local_strategy');
 const User = require('./models/user');
