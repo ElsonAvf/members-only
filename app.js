@@ -11,7 +11,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 mongoose.set('strictQuery', 'false');
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => app.use('/', indexRouter));
 
 const LocalStrategy = require('./auth/local_strategy');
 const User = require('./models/user');
@@ -49,8 +50,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
